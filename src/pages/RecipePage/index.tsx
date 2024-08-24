@@ -1,10 +1,12 @@
 import { RecipeInfo } from '@/types/recipeInfo';
+import { getFullRecipeLink } from '@/utils/getFullRecipeLink';
 
 type Props = {
     recipe: RecipeInfo;
 };
 
 const RecipePage = ({ recipe }: Props) => {
+    const recipeLink = getFullRecipeLink(recipe);
     return (
         <div>
             <img src={recipe.image} />
@@ -25,7 +27,7 @@ const RecipePage = ({ recipe }: Props) => {
                 ))}
             </div>
 
-            <a href={recipe.link}>Recipe link</a>
+            <a href={recipeLink}>Recipe link</a>
         </div>
     );
 };
