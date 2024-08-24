@@ -1,5 +1,6 @@
-import { DietTypes } from '../types/dietTypes';
-import { DishTypes } from '../types/dishTypes';
+import { DietTypes } from '@/types/dietTypes';
+import { DishTypes } from '@/types/dishTypes';
+
 import { getRecipesByLink } from './getRecipesByLink';
 
 const API_URI = import.meta.env.VITE_API_URI;

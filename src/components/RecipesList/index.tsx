@@ -1,5 +1,5 @@
-import { useSearchContext } from '../../hooks/useSearchContext';
-import { getRecipesByLink } from '../../utils/getRecipesByLink';
+import { useSearchContext } from '@/hooks/useSearchContext';
+import { getRecipesByLink } from '@/utils/getRecipesByLink';
 
 const RecipesList = () => {
     const { recipesList, addRecipes } = useSearchContext();

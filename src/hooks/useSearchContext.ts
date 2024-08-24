@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react';
 
-import { RecipeListResponse } from '../types/recipeListResponse';
+import { RecipeListResponse } from '@/types/recipeListResponse';
 
 export type SearchContent = {
     recipesList: RecipeListResponse;

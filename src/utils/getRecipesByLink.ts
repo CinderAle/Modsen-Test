@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-import { RecipeItem } from '../types/recipeItem';
-import { RecipeItemResponse } from '../types/recipeItemResponse';
+import { RecipeItem } from '@/types/recipeItem';
+import { RecipeItemResponse } from '@/types/recipeItemResponse';
 
 export const getRecipesByLink = (link: string) => {
     return axios.get(link).then((response) => {

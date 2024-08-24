@@ -1,11 +1,11 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 
-import { FilterContext } from '../../hooks/useFilterContext';
-import { useSearchContext } from '../../hooks/useSearchContext';
-import { DietTypes } from '../../types/dietTypes';
-import { DishTypes } from '../../types/dishTypes';
-import getRecipes from '../../utils/getRecipes';
-import TypeSelect from '../TypeSelect';
+import TypeSelect from '@/components/TypeSelect';
+import { FilterContext } from '@/hooks/useFilterContext';
+import { useSearchContext } from '@/hooks/useSearchContext';
+import { DietTypes } from '@/types/dietTypes';
+import { DishTypes } from '@/types/dishTypes';
+import getRecipes from '@/utils/getRecipes';
 
 const RecipeFilter = () => {
     const { setRecipes } = useSearchContext();

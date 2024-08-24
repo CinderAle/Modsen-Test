@@ -1,8 +1,8 @@
 import { ChangeEvent, useState } from 'react';
 
-import { useFilterContext } from '../../hooks/useFilterContext';
-import { DietTypes } from '../../types/dietTypes';
-import { DishTypes } from '../../types/dishTypes';
+import { useFilterContext } from '@/hooks/useFilterContext';
+import { DietTypes } from '@/types/dietTypes';
+import { DishTypes } from '@/types/dishTypes';
 
 type Props = {
     type: typeof DishTypes | typeof DietTypes;

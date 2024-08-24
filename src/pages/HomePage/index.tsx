@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import RecipeFilter from '../../components/RecipeFilter';
-import RecipesList from '../../components/RecipesList';
-import { SearchContext } from '../../hooks/useSearchContext';
-import { RecipeListResponse } from '../../types/recipeListResponse';
+import RecipeFilter from '@/components/RecipeFilter';
+import RecipesList from '@/components/RecipesList';
+import { SearchContext } from '@/hooks/useSearchContext';
+import { RecipeListResponse } from '@/types/recipeListResponse';
 
 const HomePage = () => {
     const [recipesList, setRecipes] = useState<RecipeListResponse>({ recipes: [], next: '' });
