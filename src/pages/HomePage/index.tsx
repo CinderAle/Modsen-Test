@@ -12,6 +12,8 @@ const HomePage = () => {
         setRecipes({ recipes: [...recipesList.recipes, ...newRecipes.recipes], next: newRecipes.next });
     };
 
+    console.log(recipesList.recipes);
+
     return (
         <SearchContext.Provider value={{ recipesList, setRecipes, addRecipes }}>
             <RecipeFilter />
