@@ -1,35 +1,23 @@
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
+import RecipeInfoBlock from '@/components/RecipeInfoBlock';
 import { RecipeInfo } from '@/types/recipeInfo';
-import { getFullRecipeLink } from '@/utils/getFullRecipeLink';
+import { getRecipeById } from '@/utils/getRecipeById';
 
-type Props = {
-    recipe: RecipeInfo;
-};
+const RecipePage = () => {
+    const { id } = useParams();
+    const [recipe, setRecipe] = useState<RecipeInfo | null>(null);
 
-const RecipePage = ({ recipe }: Props) => {
-    const recipeLink = getFullRecipeLink(recipe);
-    return (
-        <div>
-            <img src={recipe.image} />
-            <p>Meal type: {recipe.mealType.join(', ')}</p>
-            <h1>{recipe.label}</h1>
-            <p>Calories: {recipe.calories}</p>
-            <p>Cuisine - {recipe.cuisineType.join(', ')}</p>
-            <div>
-                {recipe.ingredients.map((e) => (
-                    <div>{e.text}</div>
-                ))}
-            </div>
+    useEffect(() => {
+        if (id) {
+            getRecipeById(id).then((response) => {
+                setRecipe(response);
+            });
+        }
+    }, []);
 
-            <div>
-                <h2>Products</h2>
-                {recipe.ingredients.map((ingredient) => (
-                    <img src={ingredient.image} />
-                ))}
-            </div>
-
-            <a href={recipeLink}>Recipe link</a>
-        </div>
-    );
+    return recipe ? <RecipeInfoBlock recipe={recipe} /> : <div>Loading</div>;
 };
 
 export default RecipePage;

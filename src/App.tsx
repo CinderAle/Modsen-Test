@@ -1,20 +1,13 @@
-import { useState } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
-import RecipePage from '@/pages/RecipePage';
-
-import { RecipeInfo } from './types/recipeInfo';
-import { getRecipeInfo } from './utils/getRecipeInfo';
-
-const uri = import.meta.env.VITE_TEST_LINK;
+import AppRouter from './components/AppRouter';
 
 function App() {
-    const [recipe, setRecipe] = useState<RecipeInfo | null>(null);
-    getRecipeInfo(uri).then((info) => setRecipe(info));
-    if (recipe) {
-        return <RecipePage recipe={recipe} />;
-    } else {
-        return <div></div>;
-    }
+    return (
+        <BrowserRouter>
+            <AppRouter />
+        </BrowserRouter>
+    );
 }
 
 export default App;
