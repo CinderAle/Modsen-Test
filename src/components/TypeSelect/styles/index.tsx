@@ -98,6 +98,7 @@ export const OptionsBlock = styled.ul`
 export const Option = styled.li`
     padding: 14px;
     cursor: pointer;
+    font-family: Roboto;
 
     &:hover {
         background-color: #d1d1d1;
