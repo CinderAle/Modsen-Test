@@ -1,4 +1,5 @@
 import '@/styles/index.css';
+import '@/styles/fonts.css';
 
 import { createRoot } from 'react-dom/client';
 

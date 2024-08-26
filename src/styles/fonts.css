@@ -1,0 +1,19 @@
+@font-face {
+    font-family: Space_Grotesk;
+    src: url('../assets/fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: Inter;
+    src: url('../assets/fonts/Inter/Inter-VariableFont_opsz\,wght.ttf');
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url('../assets/fonts/Poppins/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: Playfair_Display;
+    src: url('../assets/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf');
+}

@@ -1,18 +1,34 @@
+import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import styles from '@/constants/styles';
 
-export const HeaderBlock = styled.header`
+const HeaderElement = styled.header`
+    font-family: Space_Grotesk;
+
     width: 100%;
     background-color: ${styles.DARK_BLUE};
     box-shadow: 0px 4px 16.1px rgba(0, 0, 0, 0.1);
+`;
+
+const CenterFrame = styled.div`
+    width: 1440px;
+    margin: 0 auto;
     height: 150px;
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 `;
+
+export const HeaderBlock = ({ children }: { children: ReactNode }) => {
+    return (
+        <HeaderElement>
+            <CenterFrame>{children}</CenterFrame>
+        </HeaderElement>
+    );
+};
 
 export const RecipeLogo = styled.img`
     width: 48px;
