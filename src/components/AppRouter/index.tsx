@@ -1,4 +1,4 @@
-import { Navigate,Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import paths from '@/constants/routes';
 import { publicRoutes } from '@/routes';
@@ -10,6 +10,12 @@ const AppRouter = () => {
                 <Route path={route.path} Component={route.component} />
             ))}
             <Route path="" element={<Navigate to={paths.HOME_PAGE} />} />
+            <Route
+                path="*"
+                Component={() => {
+                    throw new Error('Page not found');
+                }}
+            />
         </Routes>
     );
 };
