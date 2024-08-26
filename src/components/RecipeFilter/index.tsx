@@ -1,11 +1,17 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 
+import SearchIcon from '@/assets/svg/searchIcon.svg';
 import TypeSelect from '@/components/TypeSelect';
 import { FilterContext } from '@/hooks/useFilterContext';
 import { useSearchContext } from '@/hooks/useSearchContext';
 import { DietTypes } from '@/types/dietTypes';
 import { DishTypes } from '@/types/dishTypes';
 import getRecipes from '@/utils/getRecipes';
+
+import { FilterContainer, InputContainer, SearchInput, SearchLabel, SubmitButton } from './styles';
+
+const SEARCH_LABEL = 'Discover Recipe & Delicious Food';
+const SEARCH_PLACEHOLDER = 'Search Your Favorite Food';
 
 const RecipeFilter = () => {
     const { setRecipes } = useSearchContext();
@@ -26,10 +32,17 @@ const RecipeFilter = () => {
     return (
         <FilterContext.Provider value={{ diet, dish, setDiet, setDish }}>
             <form onSubmit={handleSubmit}>
-                <input type="text" value={query} onChange={changeQuery} />
-                <TypeSelect type={DishTypes} />
-                <TypeSelect type={DietTypes} />
-                <input type="submit" value={'Submit'} />
+                <SearchLabel>{SEARCH_LABEL}</SearchLabel>
+                <InputContainer>
+                    <SearchInput type="text" value={query} onChange={changeQuery} placeholder={SEARCH_PLACEHOLDER} />
+                    <SubmitButton type="submit">
+                        <img src={SearchIcon} />
+                    </SubmitButton>
+                </InputContainer>
+                <FilterContainer>
+                    <TypeSelect type={DishTypes} />
+                    <TypeSelect type={DietTypes} />
+                </FilterContainer>
             </form>
         </FilterContext.Provider>
     );
