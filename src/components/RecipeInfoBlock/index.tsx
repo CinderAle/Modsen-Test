@@ -1,5 +1,24 @@
+import caloriesIcon from '@/assets/svg/caloriesIcon.svg';
+import cuisineIcon from '@/assets/svg/cuisineIcon.svg';
 import { RecipeInfo } from '@/types/recipeInfo';
 import { getFullRecipeLink } from '@/utils/getFullRecipeLink';
+
+import {
+    GeneralInfo,
+    GeneralInfoIcon,
+    InfoContainer,
+    IngredientItem,
+    IngredientsLabel,
+    IngredientsList,
+    MealType,
+    ProductImage,
+    ProductsBlock,
+    ProductsLabel,
+    RecipeBox,
+    RecipeLink,
+    RecipeName,
+    ResultImage,
+} from './styles';
 
 type Props = {
     recipe: RecipeInfo;
@@ -8,27 +27,35 @@ type Props = {
 const RecipeInfoBlock = ({ recipe }: Props) => {
     const recipeLink = getFullRecipeLink(recipe);
     return (
-        <div>
-            <img src={recipe.image} />
-            <p>Meal type: {recipe.mealType.join(', ')}</p>
-            <h1>{recipe.label}</h1>
-            <p>Calories: {recipe.calories}</p>
-            <p>Cuisine - {recipe.cuisineType.join(', ')}</p>
-            <div>
-                {recipe.ingredients.map((e) => (
-                    <div>{e.text}</div>
-                ))}
-            </div>
+        <InfoContainer>
+            <RecipeBox>
+                <MealType>Meal type: {recipe.mealType.join(', ')}</MealType>
+                <RecipeName>{recipe.label}</RecipeName>
+                <GeneralInfo>
+                    <GeneralInfoIcon src={caloriesIcon} />
+                    {Math.round(recipe.calories)} calories
+                </GeneralInfo>
+                <GeneralInfo>
+                    <GeneralInfoIcon src={cuisineIcon} />
+                    Cuisine - {recipe.cuisineType.join(', ')}
+                </GeneralInfo>
+                <IngredientsList>
+                    <IngredientsLabel>Ingredients</IngredientsLabel>
+                    {recipe.ingredients.map((e) => (
+                        <IngredientItem>{e.text}</IngredientItem>
+                    ))}
+                </IngredientsList>
 
-            <div>
-                <h2>Products</h2>
-                {recipe.ingredients.map((ingredient) => (
-                    <img src={ingredient.image} />
-                ))}
-            </div>
-
-            <a href={recipeLink}>Recipe link</a>
-        </div>
+                <ProductsLabel>Products</ProductsLabel>
+                <ProductsBlock>
+                    {recipe.ingredients.map((ingredient) => (
+                        <ProductImage src={ingredient.image} />
+                    ))}
+                </ProductsBlock>
+                <RecipeLink href={recipeLink}>Recipe link</RecipeLink>
+            </RecipeBox>
+            <ResultImage src={recipe.image} />
+        </InfoContainer>
     );
 };
 
