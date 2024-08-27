@@ -23,6 +23,7 @@ const TypeSelect = ({ type }: Props) => {
     const selectOption = (value: string) => {
         const enumValue = value as keyof typeof type;
         setSelected(enumValue === DishTypes.Any || enumValue === DietTypes.Any ? '' : type[enumValue]);
+        setDropped(false);
 
         if (type === DishTypes) {
             setDish(DishTypes[enumValue]);
