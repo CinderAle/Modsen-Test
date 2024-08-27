@@ -9,7 +9,7 @@ export const SearchLabel = styled.h1`
     margin: 0;
     margin-top: 150px;
     text-align: center;
-    color: #2e266f;
+    color: ${styles.HEADER_BLUE};
 `;
 
 export const InputContainer = styled.div`

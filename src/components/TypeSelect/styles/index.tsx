@@ -92,8 +92,9 @@ export const Option = styled.li`
     padding: 14px;
     cursor: pointer;
     font-family: Roboto;
+    transition: 0.3s;
 
     &:hover {
-        background-color: #d1d1d1;
+        background-color: ${styles.GRAY};
     }
 `;
