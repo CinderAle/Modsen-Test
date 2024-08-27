@@ -2,6 +2,8 @@ import { Component, ReactNode } from 'react';
 
 import paths from '@/constants/routes';
 
+import { ErrorCode, ErrorContainer, ErrorLabel, ErrorMessage, HomeButton } from './styles';
+
 type State = {
     hasError: boolean;
 };
@@ -27,12 +29,12 @@ export default class ErrorBoundary extends Component<Props, State> {
     public render() {
         if (this.state.hasError) {
             return (
-                <div>
-                    <h1>404</h1>
-                    <h2>OOps! Page Not Found</h2>
-                    <p>This page doesn't exist or was removed! We suggest you back to home</p>
-                    <a href={paths.HOME_PAGE}>Back to homepage</a>
-                </div>
+                <ErrorContainer>
+                    <ErrorCode>404</ErrorCode>
+                    <ErrorLabel>OOps! Page Not Found</ErrorLabel>
+                    <ErrorMessage>This page doesn't exist or was removed! We suggest you back to home</ErrorMessage>
+                    <HomeButton href={paths.HOME_PAGE}>Back to homepage</HomeButton>
+                </ErrorContainer>
             );
         }
 
