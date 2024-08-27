@@ -4,7 +4,20 @@ import paths from '@/constants/routes';
 import { useSearchContext } from '@/hooks/useSearchContext';
 import { getRecipesByLink } from '@/utils/getRecipesByLink';
 
-import { ItemImage, ItemLabel, ListContainer, ListItem, NextItemsButton, ResultsLabel, SearchResults } from './styles';
+import {
+    ItemImage,
+    ItemLabel,
+    ListContainer,
+    ListItem,
+    NextItemsButton,
+    NoRecipesLabel,
+    ResultsLabel,
+    SearchResults,
+} from './styles';
+
+const RESULTS_LABEL = 'Founded dishes';
+const SHOW_MORE = 'Show more';
+const NO_RECIPES = 'No recipes found yet! Use filters above or search recipes';
 
 const RecipesList = () => {
     const { recipesList, addRecipes } = useSearchContext();
@@ -20,7 +33,11 @@ const RecipesList = () => {
 
     return (
         <SearchResults>
-            <ResultsLabel>Founded dishes</ResultsLabel>
+            {recipesList.recipes.length === 0 ? (
+                <NoRecipesLabel>{NO_RECIPES}</NoRecipesLabel>
+            ) : (
+                <ResultsLabel>{RESULTS_LABEL}</ResultsLabel>
+            )}
             <ListContainer>
                 {recipesList.recipes.map((recipe) => (
                     <ListItem key={recipe.id} onClick={() => handleRecipeClick(recipe.id)}>
@@ -29,7 +46,7 @@ const RecipesList = () => {
                     </ListItem>
                 ))}
             </ListContainer>
-            {recipesList.next && <NextItemsButton onClick={showNextRecipes}>Show more</NextItemsButton>}
+            {recipesList.next && <NextItemsButton onClick={showNextRecipes}>{SHOW_MORE}</NextItemsButton>}
         </SearchResults>
     );
 };

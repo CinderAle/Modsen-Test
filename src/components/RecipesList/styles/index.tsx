@@ -76,3 +76,12 @@ export const NextItemsButton = styled.button`
     border: none;
     cursor: pointer;
 `;
+
+export const NoRecipesLabel = styled.h1`
+    text-align: center;
+    margin-top: 50px;
+    font-family: Inter;
+    font-size: 48px;
+    font-weight: normal;
+    color: ${styles.HEADER_BLUE};
+`;
