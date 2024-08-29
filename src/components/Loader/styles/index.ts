@@ -6,6 +6,8 @@ const rotateAnimation = keyframes`
 
 export const Spinner = styled.div`
     width: 50px;
+    margin: 0 auto;
+
     aspect-ratio: 1;
     border-radius: 50%;
     background:

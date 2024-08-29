@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import paths from '@/constants/routes';
 import { useSearchContext } from '@/hooks/useSearchContext';
 import { getRecipesByLink } from '@/utils/getRecipesByLink';
 
+import Loader from '../Loader';
 import {
     ItemImage,
     ItemLabel,
@@ -22,9 +24,15 @@ const NO_RECIPES = 'No recipes found yet! Use filters above or search recipes';
 const RecipesList = () => {
     const { recipesList, addRecipes } = useSearchContext();
     const showRecipe = useNavigate();
+    const [isLoading, setLoading] = useState(false);
 
     const showNextRecipes = () => {
-        getRecipesByLink(recipesList.next).then((recipes) => addRecipes(recipes));
+        setLoading(true);
+        getRecipesByLink(recipesList.next)
+            .then((recipes) => addRecipes(recipes))
+            .finally(() => {
+                setLoading(false);
+            });
     };
 
     const handleRecipeClick = (id: string) => {
@@ -46,7 +54,8 @@ const RecipesList = () => {
                     </ListItem>
                 ))}
             </ListContainer>
-            {recipesList.next && <NextItemsButton onClick={showNextRecipes}>{SHOW_MORE}</NextItemsButton>}
+            {recipesList.next &&
+                (isLoading ? <Loader /> : <NextItemsButton onClick={showNextRecipes}>{SHOW_MORE}</NextItemsButton>)}
         </SearchResults>
     );
 };
