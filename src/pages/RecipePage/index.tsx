@@ -7,6 +7,8 @@ import { useLocationContext } from '@/hooks/useLocationContext';
 import { RecipeInfo } from '@/types/recipeInfo';
 import { getRecipeById } from '@/utils/getRecipeById';
 
+import { PageLoader } from './styles';
+
 const RecipePage = () => {
     const { id } = useParams();
     const [recipe, setRecipe] = useState<RecipeInfo | null>(null);
@@ -26,7 +28,7 @@ const RecipePage = () => {
         }
     }, [id]);
 
-    return recipe ? <RecipeInfoBlock recipe={recipe} /> : <div>Loading</div>;
+    return recipe ? <RecipeInfoBlock recipe={recipe} /> : <PageLoader />;
 };
 
 export default RecipePage;
