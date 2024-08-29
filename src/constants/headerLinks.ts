@@ -1,5 +1,3 @@
-import routes from './routes';
-
 export type HeaderLink = {
     path: string;
     name: string;
@@ -7,7 +5,7 @@ export type HeaderLink = {
 
 export const headerLinks: HeaderLink[] = [
     {
-        path: routes.HOME_PAGE,
+        path: '',
         name: 'Home',
     },
 ];
