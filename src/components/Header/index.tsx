@@ -11,7 +11,7 @@ const Header = () => {
 
     const { path } = useLocationContext();
     const filteredLinks = headerLinks.filter((link) => link.path !== path);
-
+    console.log(path);
     const handleClick = () => {
         setMenuOpen(!menuOpen);
     };

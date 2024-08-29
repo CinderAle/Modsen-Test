@@ -17047,10 +17047,11 @@ attempted value: ${s}
         WT = () => {
             const [e, t] = C.useState(!1),
                 { path: n } = Ef(),
-                r = AT.filter((o) => o.path !== n),
-                i = () => {
-                    t(!e);
-                };
+                r = AT.filter((o) => o.path !== n);
+            console.log(n);
+            const i = () => {
+                t(!e);
+            };
             return $.jsx(LT, {
                 children: $.jsxs(IT, {
                     children: [
