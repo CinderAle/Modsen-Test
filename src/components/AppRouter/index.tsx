@@ -1,11 +1,11 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import paths from '@/constants/routes';
 import { publicRoutes } from '@/routes';
 
 const AppRouter = () => {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Routes>
                 {publicRoutes.map((route, index) => (
                     <Route key={index} path={route.path} Component={route.component} />
@@ -18,7 +18,7 @@ const AppRouter = () => {
                     }}
                 />
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
     );
 };
 
