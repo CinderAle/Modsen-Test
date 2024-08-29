@@ -14614,16 +14614,14 @@ Error generating stack: ` +
             return this._id;
         }
     }
-    const r1 = (e) => (
-            console.log(e),
+    const r1 = (e) =>
             de.get(e).then((t) => {
                 var n;
                 return {
                     recipes: t.data.hits.map((r) => new n1(r.recipe.label, r.recipe.image, r._links.self.href)),
                     next: ((n = t.data._links.next) == null ? void 0 : n.href) ?? '',
                 };
-            })
-        ),
+            }),
         p4 = (e, t, n) => {
             let r = `${Yn.API_URI}?type=public&app_id=${Yn.APP_ID}&app_key=${Yn.APP_KEY}`;
             return (
@@ -14631,7 +14629,6 @@ Error generating stack: ` +
                 (r += t !== lr.Any ? '&diet=' + encodeURI(t).toLowerCase() : ''),
                 (r += n !== Lt.Any ? '&dishType=' + encodeURI(n) : ''),
                 (r += '&field=image&field=label&field=externalId'),
-                console.log(r, 1),
                 r1(r)
             );
         },
