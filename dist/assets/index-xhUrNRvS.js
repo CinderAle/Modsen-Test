@@ -17047,11 +17047,10 @@ attempted value: ${s}
         WT = () => {
             const [e, t] = C.useState(!1),
                 { path: n } = Ef(),
-                r = AT.filter((o) => o.path !== n);
-            console.log(n);
-            const i = () => {
-                t(!e);
-            };
+                r = AT.filter((o) => n.endsWith(o.path)),
+                i = () => {
+                    t(!e);
+                };
             return $.jsx(LT, {
                 children: $.jsxs(IT, {
                     children: [
@@ -17083,11 +17082,9 @@ attempted value: ${s}
             },
         };
     function QT() {
-        const [e, t] = C.useState(window.location.pathname);
+        const [e, t] = C.useState(window.location.href);
         return (
-            console.log(window.location.hash),
-            console.log(window.location),
-            console.log(window.location.href),
+            console.log(e, window.location),
             $.jsx(tw, {
                 theme: KT,
                 children: $.jsxs(y1.Provider, {

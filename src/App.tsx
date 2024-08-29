@@ -10,10 +10,9 @@ import { MainContainer } from './styles/mainContainer';
 import { theme } from './styles/theme';
 
 function App() {
-    const [path, setPath] = useState(window.location.pathname);
-    console.log(window.location.hash);
-    console.log(window.location);
-    console.log(window.location.href);
+    const [path, setPath] = useState(window.location.href);
+    console.log(path, window.location);
+
     return (
         <ThemeProvider theme={theme}>
             <LocationContext.Provider value={{ path, setPath }}>
