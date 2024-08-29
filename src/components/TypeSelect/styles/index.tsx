@@ -35,14 +35,14 @@ const InputField = styled.input`
     width: 100%;
 `;
 
-const Caret = styled.img<{ dropped: boolean }>`
+const Caret = styled.img<{ $dropped: boolean }>`
     position: absolute;
     top: 4px;
     right: 4px;
     width: 24px;
     height: 24px;
     cursor: pointer;
-    transform: rotate(${(props) => (props.dropped ? '0' : '180deg')});
+    transform: rotate(${(props) => (props.$dropped ? '0' : '180deg')});
     transition: 0.3s;
 `;
 
@@ -66,7 +66,7 @@ export const Input = ({
     return (
         <InputBox onClick={onClick}>
             <InputField type={type} readOnly={readOnly} placeholder={placeholder} value={value} name={name} />
-            <Caret src={selectCaret} dropped={dropped} />
+            <Caret src={selectCaret} $dropped={dropped} />
         </InputBox>
     );
 };

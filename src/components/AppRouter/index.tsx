@@ -7,8 +7,8 @@ const AppRouter = () => {
     return (
         <BrowserRouter>
             <Routes>
-                {publicRoutes.map((route) => (
-                    <Route path={route.path} Component={route.component} />
+                {publicRoutes.map((route, index) => (
+                    <Route key={index} path={route.path} Component={route.component} />
                 ))}
                 <Route path="" element={<Navigate to={paths.HOME_PAGE} />} />
                 <Route

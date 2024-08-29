@@ -77,14 +77,14 @@ export const LogoButtonContainer = styled.div`
     }
 `;
 
-export const PageLink = styled.a<{ menuOpen: boolean }>`
+export const PageLink = styled.a<{ $menuOpen: boolean }>`
     display: block;
     color: ${styles.WHITE};
     text-decoration: none;
     font-size: 24px;
 
     @media ${(props) => props.theme.media.tablet} {
-        display: ${(props) => (props.menuOpen ? 'block' : 'none')};
+        display: ${(props) => (props.$menuOpen ? 'block' : 'none')};
         margin-top: 40px;
     }
 `;
@@ -115,12 +115,12 @@ const MenuButtonLine = styled.div`
     height: 2px;
 `;
 
-const UpperLine = styled(MenuButtonLine)<{ menuOpen: boolean }>`
+const UpperLine = styled(MenuButtonLine)<{ $menuOpen: boolean }>`
     position: absolute;
     top: 0;
     left: 0;
 
-    transform: translate(${(props) => (props.menuOpen ? '29px' : '0')}, 0);
+    transform: translate(${(props) => (props.$menuOpen ? '29px' : '0')}, 0);
     transition: 0.3s;
 `;
 
@@ -128,21 +128,21 @@ const CenterLine = styled(MenuButtonLine)`
     width: 100%;
 `;
 
-const BottomLine = styled(MenuButtonLine)<{ menuOpen: boolean }>`
+const BottomLine = styled(MenuButtonLine)<{ $menuOpen: boolean }>`
     position: absolute;
     bottom: 0;
     right: 0;
 
-    transform: translate(${(props) => (props.menuOpen ? '-29px' : '0')}, 0);
+    transform: translate(${(props) => (props.$menuOpen ? '-29px' : '0')}, 0);
     transition: 0.3s;
 `;
 
 export const MenuButton = ({ onClick, menuOpen }: { onClick: () => void; menuOpen: boolean }) => {
     return (
         <MenuButtonContainer onClick={onClick}>
-            <UpperLine menuOpen={menuOpen} />
+            <UpperLine $menuOpen={menuOpen} />
             <CenterLine />
-            <BottomLine menuOpen={menuOpen} />
+            <BottomLine $menuOpen={menuOpen} />
         </MenuButtonContainer>
     );
 };

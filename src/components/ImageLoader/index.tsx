@@ -11,10 +11,10 @@ const ImageLoader = ({ src, className }: Props) => {
     const [isLoaded, setLoaded] = useState(false);
     return (
         <ImageContainer className={className}>
-            <TemporalLoader isLoaded={isLoaded} />
+            <TemporalLoader $isLoaded={isLoaded} />
             <Image
                 src={src}
-                isLoaded={isLoaded}
+                $isLoaded={isLoaded}
                 onLoad={() => {
                     setLoaded(true);
                 }}

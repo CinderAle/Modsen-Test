@@ -27,7 +27,7 @@ const Header = () => {
                     {filteredLinks.length > 0 && <MenuButton menuOpen={menuOpen} onClick={handleClick} />}
                 </LogoButtonContainer>
                 {filteredLinks.map((link) => (
-                    <PageLink href={link.path} menuOpen={menuOpen}>
+                    <PageLink key={link.name} href={link.path} $menuOpen={menuOpen}>
                         {link.name}
                     </PageLink>
                 ))}

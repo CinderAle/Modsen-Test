@@ -55,7 +55,7 @@ const RecipeInfoBlock = ({ recipe }: Props) => {
                 <IngredientsList>
                     <IngredientsLabel>{INGREDIENTS}</IngredientsLabel>
                     {recipe.ingredients.map((ingredient) => (
-                        <IngredientItem>
+                        <IngredientItem key={ingredient.foodId}>
                             {ingredient.text}
                             <IngredientImage src={ingredient.image} />
                         </IngredientItem>
@@ -65,7 +65,7 @@ const RecipeInfoBlock = ({ recipe }: Props) => {
                 <ProductsLabel>{PRODUCTS}</ProductsLabel>
                 <ProductsBlock>
                     {recipe.ingredients.map((ingredient) => (
-                        <ProductImage src={ingredient.image} />
+                        <ProductImage key={ingredient.foodId} src={ingredient.image} />
                     ))}
                 </ProductsBlock>
                 <RecipeLink href={recipeLink}>{RECIPE_LINK}</RecipeLink>

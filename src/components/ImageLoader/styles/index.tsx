@@ -9,12 +9,12 @@ export const ImageContainer = styled.div`
     overflow: hidden;
 `;
 
-export const TemporalLoader = styled(Loader)<{ isLoaded: boolean }>`
-    display: ${(props) => (props.isLoaded ? 'none' : 'block')};
+export const TemporalLoader = styled(Loader)<{ $isLoaded: boolean }>`
+    display: ${(props) => (props.$isLoaded ? 'none' : 'block')};
 `;
 
-export const Image = styled.img<{ isLoaded: boolean }>`
+export const Image = styled.img<{ $isLoaded: boolean }>`
     width: 100%;
     height: 100%;
-    display: ${(props) => (props.isLoaded ? 'block' : 'none')};
+    display: ${(props) => (props.$isLoaded ? 'block' : 'none')};
 `;
