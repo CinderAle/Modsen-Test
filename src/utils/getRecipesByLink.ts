@@ -4,6 +4,7 @@ import { RecipeItem } from '@/types/recipeItem';
 import { RecipeItemResponse } from '@/types/recipeItemResponse';
 
 export const getRecipesByLink = (link: string) => {
+    console.log(link);
     return axios.get(link).then((response) => {
         return {
             recipes: response.data.hits.map(

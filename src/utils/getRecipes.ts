@@ -11,7 +11,7 @@ export default (query: string, diet: DietTypes, dishType: DishTypes) => {
     requestUri += dishType !== DishTypes.Any ? '&dishType=' + encodeURI(dishType) : '';
     requestUri += `&field=image&field=label&field=externalId`;
 
-    console.log(requestUri);
+    console.log(requestUri, 1);
 
     return getRecipesByLink(requestUri);
 };
