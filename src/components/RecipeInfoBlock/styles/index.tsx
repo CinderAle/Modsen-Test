@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import ImageLoader from '@/components/ImageLoader';
 import styles from '@/constants/styles';
 
 export const InfoContainer = styled.div`
@@ -37,7 +38,7 @@ export const RecipeBox = styled.div`
     }
 `;
 
-export const ResultImage = styled.img`
+export const ResultImage = styled(ImageLoader)`
     width: 520px;
     border-radius: 0 28px 28px 0;
 
@@ -120,7 +121,7 @@ export const ProductsBlock = styled.div`
     }
 `;
 
-export const ProductImage = styled.img`
+export const ProductImage = styled(ImageLoader)`
     width: 163px;
     height: 163px;
     border-radius: 20px;

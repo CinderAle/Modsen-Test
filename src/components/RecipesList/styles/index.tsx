@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import ImageLoader from '@/components/ImageLoader';
 import styles from '@/constants/styles';
 
 export const SearchResults = styled.div`
@@ -71,7 +72,7 @@ export const ListItem = styled.div`
     }
 `;
 
-export const ItemImage = styled.img`
+export const ItemImage = styled(ImageLoader)`
     width: 100%;
     height: 318px;
 `;

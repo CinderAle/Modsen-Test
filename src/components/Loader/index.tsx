@@ -1,7 +1,11 @@
 import { Spinner } from './styles';
 
-const Loader = () => {
-    return <Spinner />;
+type Props = {
+    className?: string;
+};
+
+const Loader = ({ className }: Props) => {
+    return <Spinner className={className} />;
 };
 
 export default Loader;
