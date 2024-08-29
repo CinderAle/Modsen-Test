@@ -16,10 +16,10 @@ const CenterFrame = styled.div`
     margin: 0 auto;
     min-height: 150px;
     padding: 50px 0;
+    box-sizing: border-box;
 
     @media (max-width: 1460px) {
         width: 100%;
-        box-sizing: border-box;
         padding: 50px 20px;
     }
 `;

@@ -111,4 +111,8 @@ export const NoRecipesLabel = styled.h1`
     font-size: 48px;
     font-weight: normal;
     color: ${styles.HEADER_BLUE};
+
+    @media ${(props) => props.theme.media.phone} {
+        font-size: 24px;
+    }
 `;
