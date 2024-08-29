@@ -1,55 +1,30 @@
-name: Deploy static content to Pages
+name: CI
 
 on:
-    # Runs on pushes targeting the default branch
     push:
-        branches: ['feature/deploy']
-
-    # Allows you to run this workflow manually from the Actions tab
-    workflow_dispatch:
-
-# Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
-permissions:
-    contents: read
-    pages: write
-    id-token: write
-
-# Allow one concurrent deployment
-concurrency:
-    group: 'pages'
-    cancel-in-progress: true
-
+        branches:
+            - feature/deploy
 jobs:
-    # Single deploy job since we're just deploying
-    deploy:
-        environment:
-            name: github-pages
-            url: ${{ steps.deployment.outputs.page_url }}
+    build:
         runs-on: ubuntu-latest
+
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
-            - name: Set up Node
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 20
-                  cache: 'npm'
-            - name: Install dependencies
-              run: yarn install --frozen-lockfile
+              uses: actions/checkout@v1
+
             - name: Build
-              run: npm run build
+              run: |
+                  npm install
+                  npm run-script build
               env:
-                  VITE_API_URI: ${{secrets.VITE_API_URI}}
-                  VITE_APP_ID: ${{secrets.VITE_APP_ID}}
-                  VITE_APP_KEY: ${{secrets.VITE_APP_KEY}}
-                  VITE_FULL_RECIPE_LINK: ${{secrets.VITE_FULL_RECIPE_LINK}}
-            - name: Setup Pages
-              uses: actions/configure-pages@v4
-            - name: Upload artifact
-              uses: actions/upload-pages-artifact@v3
+                  VITE_APP_ID: ${{ secrets.VITE_APP_ID }}
+                  VITE_APP_KEY: ${{ secrets.VITE_APP_KEY }}
+                  VITE_API_URI: ${{ secrets.VITE_API_URI }}
+                  VITE_FULL_RECIPE_LINK: ${{ secrets.VITE_FULL_RECIPE_LINK }}
+
+            - name: Deploy
+              uses: JamesIves/github-pages-deploy-action@4.0.0
               with:
-                  # Upload dist folder
-                  path: './dist'
-            - name: Deploy to GitHub Pages
-              id: deployment
-              uses: actions/deploy-pages@v4
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  BRANCH: gh-pages
+                  FOLDER: dist
