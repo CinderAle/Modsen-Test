@@ -5,7 +5,7 @@ export type HeaderLink = {
     name: string;
 };
 
-const DEPLOY_PATH = 'Modsen-Test/#';
+const DEPLOY_PATH = '#';
 
 export const headerLinks: HeaderLink[] = [
     {
