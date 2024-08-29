@@ -1,17 +1,36 @@
-import Logo from '@/assets/svg/recipeLogo.svg';
-import paths from '@/constants/routes';
+import { useState } from 'react';
 
-import { HeaderBlock, HeaderNav, PageLink, RecipeHost, RecipeLogo } from './styles';
+import Logo from '@/assets/svg/recipeLogo.svg';
+import { headerLinks } from '@/constants/headerLinks';
+import { useLocationContext } from '@/hooks/useLocationContext';
+
+import { HeaderBlock, HeaderNav, LogoButtonContainer, MenuButton, PageLink, RecipeHost, RecipeLogo } from './styles';
 
 const Header = () => {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const { path } = useLocationContext();
+    const filteredLinks = headerLinks.filter((link) => link.path !== path);
+
+    const handleClick = () => {
+        setMenuOpen(!menuOpen);
+    };
+
     return (
         <HeaderBlock>
-            <RecipeHost>
-                <RecipeLogo src={Logo} />
-                Modsen recipe
-            </RecipeHost>
             <HeaderNav>
-                <PageLink href={paths.HOME_PAGE}>Home</PageLink>
+                <LogoButtonContainer>
+                    <RecipeHost>
+                        <RecipeLogo src={Logo} />
+                        Modsen recipe
+                    </RecipeHost>
+                    {filteredLinks.length > 0 && <MenuButton menuOpen={menuOpen} onClick={handleClick} />}
+                </LogoButtonContainer>
+                {filteredLinks.map((link) => (
+                    <PageLink href={link.path} menuOpen={menuOpen}>
+                        {link.name}
+                    </PageLink>
+                ))}
             </HeaderNav>
         </HeaderBlock>
     );

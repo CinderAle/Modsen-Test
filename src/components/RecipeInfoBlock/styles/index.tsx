@@ -7,7 +7,19 @@ export const InfoContainer = styled.div`
     justify-content: center;
     width: 1280px;
     align-items: center;
-    margin: 200px 0;
+    margin: 200px auto;
+
+    @media ${(props) => props.theme.media.smallLaptop} {
+        width: 90%;
+    }
+
+    @media (max-width: 1150px) {
+        flex-direction: column-reverse;
+    }
+
+    @media ${(props) => props.theme.media.tablet} {
+        margin: 100px auto;
+    }
 `;
 
 export const RecipeBox = styled.div`
@@ -16,11 +28,28 @@ export const RecipeBox = styled.div`
     border-radius: 28px;
     box-sizing: border-box;
     padding: 60px;
+
+    @media ${(props) => props.theme.media.tablet} {
+        width: 90%;
+    }
+    @media ${(props) => props.theme.media.phone} {
+        padding: 20px 10px;
+    }
 `;
 
 export const ResultImage = styled.img`
     width: 520px;
     border-radius: 0 28px 28px 0;
+
+    @media (max-width: 1150px) {
+        border-radius: 28px 28px 0 0;
+    }
+
+    @media ${(props) => props.theme.media.tablet} {
+        border-radius: 28px;
+        margin-bottom: 20px;
+        width: 90%;
+    }
 `;
 
 export const MealType = styled.h4`
@@ -35,10 +64,11 @@ export const RecipeName = styled.h2`
     font-size: 40px;
     color: ${styles.WHITE};
     font-weight: normal;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 `;
 
 export const GeneralInfo = styled.p`
+    margin-top: 20px;
     display: inline-block;
     color: ${styles.WHITE};
     font-size: 16px;
@@ -52,7 +82,7 @@ export const GeneralInfo = styled.p`
 export const GeneralInfoIcon = styled.img`
     position: absolute;
     margin-left: -20px;
-    height: 100%;
+    height: 17px;
 `;
 
 export const IngredientsList = styled.ul`
@@ -62,6 +92,39 @@ export const IngredientsList = styled.ul`
     box-sizing: border-box;
     padding: 20px 0;
     list-style: none;
+
+    @media ${(props) => props.theme.media.tablet} {
+        background: none;
+    }
+`;
+
+export const ProductsLabel = styled.h3`
+    font-family: Playfair_Display;
+    font-size: 24px;
+    color: ${styles.WHITE};
+    margin: 30px 0;
+
+    @media ${(props) => props.theme.media.phone} {
+        display: none;
+    }
+`;
+
+export const ProductsBlock = styled.div`
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @media ${(props) => props.theme.media.phone} {
+        display: none;
+    }
+`;
+
+export const ProductImage = styled.img`
+    width: 163px;
+    height: 163px;
+    border-radius: 20px;
+    margin-bottom: 20px;
 `;
 
 export const IngredientsLabel = styled.h3`
@@ -88,27 +151,27 @@ export const IngredientItem = styled.li`
         border: 2px solid #a2a8ba;
         margin-left: -40px;
     }
+
+    @media ${(props) => props.theme.media.phone} {
+        font-size: 12px;
+        padding-left: 20px;
+
+        &:before {
+            width: 12px;
+            height: 12px;
+            margin-left: -20px;
+        }
+    }
 `;
 
-export const ProductsLabel = styled.h3`
-    font-family: Playfair_Display;
-    font-size: 24px;
-    color: ${styles.WHITE};
-    margin: 30px 0;
-`;
+export const IngredientImage = styled(ProductImage)`
+    margin-top: 10px;
+    margin-left: -20px;
+    display: none;
 
-export const ProductsBlock = styled.div`
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-`;
-
-export const ProductImage = styled.img`
-    width: 163px;
-    height: 163px;
-    border-radius: 20px;
-    margin-bottom: 20px;
+    @media ${(props) => props.theme.media.phone} {
+        display: block;
+    }
 `;
 
 export const RecipeLink = styled.a`
@@ -119,4 +182,8 @@ export const RecipeLink = styled.a`
     font-weight: bold;
     text-decoration: none;
     color: ${styles.WHITE};
+
+    @media ${(props) => props.theme.media.phone} {
+        margin-top: 40px;
+    }
 `;

@@ -8,6 +8,7 @@ import {
     GeneralInfo,
     GeneralInfoIcon,
     InfoContainer,
+    IngredientImage,
     IngredientItem,
     IngredientsLabel,
     IngredientsList,
@@ -53,8 +54,11 @@ const RecipeInfoBlock = ({ recipe }: Props) => {
                 </GeneralInfo>
                 <IngredientsList>
                     <IngredientsLabel>{INGREDIENTS}</IngredientsLabel>
-                    {recipe.ingredients.map((e) => (
-                        <IngredientItem>{e.text}</IngredientItem>
+                    {recipe.ingredients.map((ingredient) => (
+                        <IngredientItem>
+                            {ingredient.text}
+                            <IngredientImage src={ingredient.image} />
+                        </IngredientItem>
                     ))}
                 </IngredientsList>
 

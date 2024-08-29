@@ -6,6 +6,14 @@ export const SearchResults = styled.div`
     width: 1280px;
     margin: 200px auto;
     font-family: Inter;
+
+    @media ${(props) => props.theme.media.smallLaptop} {
+        width: 90%;
+    }
+
+    @media ${(props) => props.theme.media.tablet} {
+        margin: 100px auto;
+    }
 `;
 
 export const ResultsLabel = styled.h2`
@@ -26,6 +34,16 @@ export const ResultsLabel = styled.h2`
         display: inline-block;
         margin: 0 -10px;
     }
+
+    @media ${(props) => props.theme.media.phone} {
+        font-size: 18px;
+        line-height: 1;
+        padding: 0 20px;
+
+        &:before {
+            margin: 0 -10px;
+        }
+    }
 `;
 
 export const ListContainer = styled.div`
@@ -34,6 +52,10 @@ export const ListContainer = styled.div`
     flex-wrap: wrap;
     margin-top: 50px;
     justify-content: space-around;
+
+    @media ${(props) => props.theme.media.phone} {
+        margin-top: 25px;
+    }
 `;
 
 export const ListItem = styled.div`
@@ -43,6 +65,10 @@ export const ListItem = styled.div`
     overflow: hidden;
     margin-bottom: 30px;
     cursor: pointer;
+
+    @media (max-width: 450px) {
+        width: 95%;
+    }
 `;
 
 export const ItemImage = styled.img`

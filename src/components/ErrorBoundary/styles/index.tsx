@@ -7,23 +7,42 @@ export const ErrorContainer = styled.div`
     margin: 100px auto;
     text-align: center;
     font-family: Inter;
+    box-sizing: border-box;
+
+    @media ${(props) => props.theme.media.smallLaptop} {
+        width: 100%;
+        padding: 0 20px;
+    }
 `;
 
 export const ErrorCode = styled.h1`
     font-size: 122px;
     color: #fc692d;
+
+    @media ${(props) => props.theme.media.phone} {
+        font-size: 40px;
+    }
 `;
 
 export const ErrorLabel = styled.h2`
     font-size: 46px;
     font-weight: 100;
     margin-top: 25px;
+
+    @media ${(props) => props.theme.media.phone} {
+        font-size: 24px;
+    }
 `;
 
 export const ErrorMessage = styled.p`
     font-size: 21px;
     color: #b0b0b0;
     margin-top: 50px;
+
+    @media ${(props) => props.theme.media.phone} {
+        font-size: 21px;
+        text-align: left;
+    }
 `;
 
 export const HomeButton = styled.a`

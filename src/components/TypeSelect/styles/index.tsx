@@ -17,6 +17,11 @@ const FieldStyle = `
 
 export const TypeSelectBox = styled.div`
     width: 322px;
+
+    @media ${(props) => props.theme.media.tablet} {
+        width: 100%;
+        margin: 20px auto;
+    }
 `;
 
 // for select in TypeSelect

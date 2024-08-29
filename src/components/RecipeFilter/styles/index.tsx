@@ -10,12 +10,25 @@ export const SearchLabel = styled.h1`
     margin-top: 150px;
     text-align: center;
     color: ${styles.HEADER_BLUE};
+
+    @media ${(props) => props.theme.media.tablet} {
+        margin-top: 75px;
+        font-size: 48px;
+    }
+
+    @media ${(props) => props.theme.media.phone} {
+        display: none;
+    }
 `;
 
 export const InputContainer = styled.div`
     position: relative;
     width: 1280px;
     margin: 0 auto;
+
+    @media ${(props) => props.theme.media.smallLaptop} {
+        width: 90%;
+    }
 `;
 
 export const SearchInput = styled.input`
@@ -34,6 +47,10 @@ export const SearchInput = styled.input`
     &::placeholder {
         color: rgba(0, 0, 0, 0.22);
     }
+
+    @media ${(props) => props.theme.media.tablet} {
+        font-size: 14px;
+    }
 `;
 
 export const SubmitButton = styled.button`
@@ -46,6 +63,10 @@ export const SubmitButton = styled.button`
     right: 16px;
 
     cursor: pointer;
+
+    @media ${(props) => props.theme.media.tablet} {
+        top: 7px;
+    }
 `;
 
 export const FilterContainer = styled.div`
@@ -53,4 +74,12 @@ export const FilterContainer = styled.div`
     margin: 35px auto 0;
     display: flex;
     justify-content: space-around;
+
+    @media ${(props) => props.theme.media.smallLaptop} {
+        width: 90%;
+    }
+
+    @media ${(props) => props.theme.media.tablet} {
+        flex-direction: column;
+    }
 `;
