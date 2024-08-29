@@ -6,8 +6,8 @@
 
 // Github Pages variables
 const FULL_RECIPE_LINK = process.env.FULL_RECIPE_LINK;
-const API_URI = process.env.API_URI;
-const APP_ID = process.env.APP_ID;
+const API_URI = import.meta.env.API_URI;
+const APP_ID = import.meta.env.APP_ID;
 const APP_KEY = process.env.APP_KEY;
 
 export const ENV_VARIABLES = {
