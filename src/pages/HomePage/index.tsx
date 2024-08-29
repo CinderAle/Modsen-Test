@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import RecipeFilter from '@/components/RecipeFilter';
 import RecipesList from '@/components/RecipesList';
@@ -15,7 +15,9 @@ const HomePage = () => {
     };
 
     const { setPath } = useLocationContext();
-    setPath(window.location.pathname);
+    useEffect(() => {
+        setPath(window.location.pathname);
+    });
 
     return (
         <SearchContext.Provider value={{ recipesList, isLoading, setRecipes, addRecipes, setLoading }}>
