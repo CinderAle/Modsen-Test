@@ -57,5 +57,6 @@
             "prettier --write",
             "eslint --fix"
         ]
-    }
+    },
+    "homepage": "https://cinderale.github.io/Modsen-Test"
 }
