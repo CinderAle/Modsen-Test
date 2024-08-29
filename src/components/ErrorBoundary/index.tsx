@@ -1,7 +1,5 @@
 import { Component, ReactNode } from 'react';
 
-import paths from '@/constants/routes';
-
 import { ErrorCode, ErrorContainer, ErrorLabel, ErrorMessage, HomeButton } from './styles';
 
 type State = {
@@ -38,7 +36,7 @@ export default class ErrorBoundary extends Component<Props, State> {
                     <ErrorCode>{ERROR_CODE}</ErrorCode>
                     <ErrorLabel>{PAGE_NOT_FOUND}</ErrorLabel>
                     <ErrorMessage>{ERROR_MESSAGE}</ErrorMessage>
-                    <HomeButton href={paths.HOME_PAGE}>{BACK_TO_HOME_PAGE}</HomeButton>
+                    <HomeButton href="">{BACK_TO_HOME_PAGE}</HomeButton>
                 </ErrorContainer>
             );
         }

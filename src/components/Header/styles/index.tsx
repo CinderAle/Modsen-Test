@@ -77,11 +77,11 @@ export const LogoButtonContainer = styled.div`
     }
 `;
 
-export const PageLink = styled.a<{ $menuOpen: boolean }>`
+export const PageLink = styled.p<{ $menuOpen: boolean }>`
     display: block;
     color: ${styles.WHITE};
-    text-decoration: none;
     font-size: 24px;
+    cursor: pointer;
 
     @media ${(props) => props.theme.media.tablet} {
         display: ${(props) => (props.$menuOpen ? 'block' : 'none')};

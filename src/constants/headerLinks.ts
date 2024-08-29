@@ -5,11 +5,9 @@ export type HeaderLink = {
     name: string;
 };
 
-const DEPLOY_PATH = '#';
-
 export const headerLinks: HeaderLink[] = [
     {
-        path: DEPLOY_PATH + routes.HOME_PAGE,
+        path: routes.HOME_PAGE,
         name: 'Home',
     },
 ];
