@@ -17,10 +17,10 @@ jobs:
                   npm install
                   npm run-script build
               env:
-                  APP_ID: ${{ secrets.APP_ID }}
-                  APP_KEY: ${{ secrets.APP_KEY }}
-                  API_URI: ${{ secrets.API_URI }}
-                  FULL_RECIPE_LINK: ${{ secrets.FULL_RECIPE_LINK }}
+                  VITE_APP_ID: ${{ secrets.APP_ID }}
+                  VITE_APP_KEY: ${{ secrets.APP_KEY }}
+                  VITE_API_URI: ${{ secrets.API_URI }}
+                  VITE_FULL_RECIPE_LINK: ${{ secrets.FULL_RECIPE_LINK }}
 
             - name: Deploy
               uses: JamesIves/github-pages-deploy-action@4.0.0
