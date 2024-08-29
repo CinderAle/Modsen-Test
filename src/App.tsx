@@ -11,6 +11,9 @@ import { theme } from './styles/theme';
 
 function App() {
     const [path, setPath] = useState(window.location.pathname);
+    console.log(window.location.hash);
+    console.log(window.location);
+    console.log(window.location.href);
     return (
         <ThemeProvider theme={theme}>
             <LocationContext.Provider value={{ path, setPath }}>

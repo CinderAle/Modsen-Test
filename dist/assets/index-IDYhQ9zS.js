@@ -17084,17 +17084,22 @@ attempted value: ${s}
         };
     function QT() {
         const [e, t] = C.useState(window.location.pathname);
-        return $.jsx(tw, {
-            theme: KT,
-            children: $.jsxs(y1.Provider, {
-                value: { path: e, setPath: t },
-                children: [
-                    $.jsx(WT, {}),
-                    $.jsx(GT, { children: $.jsx(TT, { children: $.jsx(gT, {}) }) }),
-                    $.jsx($T, {}),
-                ],
-            }),
-        });
+        return (
+            console.log(window.location.hash),
+            console.log(window.location),
+            console.log(window.location.href),
+            $.jsx(tw, {
+                theme: KT,
+                children: $.jsxs(y1.Provider, {
+                    value: { path: e, setPath: t },
+                    children: [
+                        $.jsx(WT, {}),
+                        $.jsx(GT, { children: $.jsx(TT, { children: $.jsx(gT, {}) }) }),
+                        $.jsx($T, {}),
+                    ],
+                }),
+            })
+        );
     }
     pm(document.getElementById('root')).render($.jsx(QT, {}));
 });
