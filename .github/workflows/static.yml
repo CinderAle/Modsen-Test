@@ -4,6 +4,7 @@ on:
     push:
         branches:
             - feature/deploy
+            - main
 jobs:
     build:
         runs-on: ubuntu-latest
