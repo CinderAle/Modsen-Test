@@ -24,12 +24,6 @@ export const TypeSelectBox = styled.div`
     }
 `;
 
-// for select in TypeSelect
-// export const Select = styled.select`
-//     ${FieldStyle}
-//     width: 322px;
-// `;
-
 const InputBox = styled.div`
     width: 100%;
     position: relative;
@@ -59,6 +53,7 @@ export const Input = ({
     value,
     onClick,
     dropped,
+    name,
 }: {
     type: string;
     readOnly: boolean;
@@ -66,10 +61,11 @@ export const Input = ({
     value: string;
     onClick: () => void;
     dropped: boolean;
+    name: string;
 }) => {
     return (
         <InputBox onClick={onClick}>
-            <InputField type={type} readOnly={readOnly} placeholder={placeholder} value={value} />
+            <InputField type={type} readOnly={readOnly} placeholder={placeholder} value={value} name={name} />
             <Caret src={selectCaret} dropped={dropped} />
         </InputBox>
     );

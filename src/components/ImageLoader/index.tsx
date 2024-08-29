@@ -9,7 +9,6 @@ type Props = {
 
 const ImageLoader = ({ src, className }: Props) => {
     const [isLoaded, setLoaded] = useState(false);
-    console.log(isLoaded, src);
     return (
         <ImageContainer className={className}>
             <TemporalLoader isLoaded={isLoaded} />

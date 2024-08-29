@@ -1,4 +1,5 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { Formik } from 'formik';
+import { useState } from 'react';
 
 import SearchIcon from '@/assets/svg/searchIcon.svg';
 import TypeSelect from '@/components/TypeSelect';
@@ -8,26 +9,20 @@ import { DietTypes } from '@/types/dietTypes';
 import { DishTypes } from '@/types/dishTypes';
 import getRecipes from '@/utils/getRecipes';
 
-import { FilterContainer, InputContainer, SearchInput, SearchLabel, SubmitButton } from './styles';
+import { FilterContainer, InputContainer, SearchInput, SearchLabel, SubmitButton, ValidationError } from './styles';
+import { validationSchema } from './validation';
 
 const SEARCH_LABEL = 'Discover Recipe & Delicious Food';
 const SEARCH_PLACEHOLDER = 'Search Your Favorite Food';
 
 const RecipeFilter = () => {
     const { setRecipes, setLoading } = useSearchContext();
-    const [query, setQuery] = useState('');
     const [diet, setDiet] = useState(DietTypes.Any);
     const [dish, setDish] = useState(DishTypes.Any);
 
-    const changeQuery = (e: ChangeEvent<HTMLInputElement>) => {
-        const value = e.currentTarget.value;
-        setQuery(value);
-    };
-
-    const handleSubmit = (event: FormEvent) => {
-        event.preventDefault();
+    const handleSubmit = (values: { query: string }) => {
         setLoading(true);
-        getRecipes(query, diet, dish)
+        getRecipes(values.query, diet, dish)
             .then((recipesList) => setRecipes(recipesList))
             .finally(() => {
                 setLoading(false);
@@ -36,19 +31,38 @@ const RecipeFilter = () => {
 
     return (
         <FilterContext.Provider value={{ diet, dish, setDiet, setDish }}>
-            <form onSubmit={handleSubmit}>
-                <SearchLabel>{SEARCH_LABEL}</SearchLabel>
-                <InputContainer>
-                    <SearchInput type="text" value={query} onChange={changeQuery} placeholder={SEARCH_PLACEHOLDER} />
-                    <SubmitButton type="submit">
-                        <img src={SearchIcon} />
-                    </SubmitButton>
-                </InputContainer>
-                <FilterContainer>
-                    <TypeSelect type={DishTypes} />
-                    <TypeSelect type={DietTypes} />
-                </FilterContainer>
-            </form>
+            <Formik
+                initialValues={{
+                    dish: '',
+                    diet: '',
+                    query: '',
+                }}
+                validationSchema={validationSchema}
+                onSubmit={handleSubmit}
+            >
+                {({ handleSubmit, values, handleChange, setFieldValue, errors }) => (
+                    <form onSubmit={handleSubmit}>
+                        <SearchLabel>{SEARCH_LABEL}</SearchLabel>
+                        <InputContainer>
+                            <SearchInput
+                                name="query"
+                                type="text"
+                                value={values.query}
+                                onChange={handleChange}
+                                placeholder={SEARCH_PLACEHOLDER}
+                            />
+                            <SubmitButton type="submit">
+                                <img src={SearchIcon} />
+                            </SubmitButton>
+                            <ValidationError>{errors.query}</ValidationError>
+                        </InputContainer>
+                        <FilterContainer>
+                            <TypeSelect setFieldValue={setFieldValue} value={values.dish} type={DishTypes} />
+                            <TypeSelect setFieldValue={setFieldValue} value={values.diet} type={DietTypes} />
+                        </FilterContainer>
+                    </form>
+                )}
+            </Formik>
         </FilterContext.Provider>
     );
 };

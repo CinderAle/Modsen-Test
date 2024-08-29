@@ -83,3 +83,15 @@ export const FilterContainer = styled.div`
         flex-direction: column;
     }
 `;
+
+export const ValidationError = styled.h3`
+    color: ${styles.ERROR_RED};
+    font-family: Inter;
+    font-size: 24px;
+    margin-top: 20px;
+    margin-left: 10px;
+
+    @media ${(props) => props.theme.media.tablet} {
+        font-size: 18px;
+    }
+`;

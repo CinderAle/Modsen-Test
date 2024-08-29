@@ -17,7 +17,7 @@ export const ErrorContainer = styled.div`
 
 export const ErrorCode = styled.h1`
     font-size: 122px;
-    color: #fc692d;
+    color: ${styles.ERROR_RED};
 
     @media ${(props) => props.theme.media.phone} {
         font-size: 40px;
