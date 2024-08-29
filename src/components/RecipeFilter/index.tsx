@@ -14,7 +14,7 @@ const SEARCH_LABEL = 'Discover Recipe & Delicious Food';
 const SEARCH_PLACEHOLDER = 'Search Your Favorite Food';
 
 const RecipeFilter = () => {
-    const { setRecipes } = useSearchContext();
+    const { setRecipes, setLoading } = useSearchContext();
     const [query, setQuery] = useState('');
     const [diet, setDiet] = useState(DietTypes.Any);
     const [dish, setDish] = useState(DishTypes.Any);
@@ -26,7 +26,12 @@ const RecipeFilter = () => {
 
     const handleSubmit = (event: FormEvent) => {
         event.preventDefault();
-        getRecipes(query, diet, dish).then((recipesList) => setRecipes(recipesList));
+        setLoading(true);
+        getRecipes(query, diet, dish)
+            .then((recipesList) => setRecipes(recipesList))
+            .finally(() => {
+                setLoading(false);
+            });
     };
 
     return (

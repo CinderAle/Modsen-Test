@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import paths from '@/constants/routes';
@@ -24,7 +23,7 @@ const NO_RECIPES = 'No recipes found yet! Use filters above or search recipes';
 const RecipesList = () => {
     const { recipesList, addRecipes } = useSearchContext();
     const showRecipe = useNavigate();
-    const [isLoading, setLoading] = useState(false);
+    const { isLoading, setLoading } = useSearchContext();
 
     const showNextRecipes = () => {
         setLoading(true);
@@ -42,7 +41,11 @@ const RecipesList = () => {
     return (
         <SearchResults>
             {recipesList.recipes.length === 0 ? (
-                <NoRecipesLabel>{NO_RECIPES}</NoRecipesLabel>
+                isLoading ? (
+                    <Loader />
+                ) : (
+                    <NoRecipesLabel>{NO_RECIPES}</NoRecipesLabel>
+                )
             ) : (
                 <ResultsLabel>{RESULTS_LABEL}</ResultsLabel>
             )}
